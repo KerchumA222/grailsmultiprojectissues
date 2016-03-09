@@ -11,11 +11,6 @@ class HtRole implements Serializable {
 
 	String authority
 
-	HtRole(String authority) {
-		this()
-		this.authority = authority
-	}
-
 	static constraints = {
 		authority blank: false, unique: true
 	}

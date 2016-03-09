@@ -18,12 +18,6 @@ class HtUser implements Serializable {
 	boolean accountLocked
 	boolean passwordExpired
 
-	HtUser(String username, String password) {
-		this()
-		this.username = username
-		this.password = password
-	}
-
 	Set<HtRole> getAuthorities() {
 		HtUserHtRole.findAllByHtUser(this)*.htRole
 	}

@@ -12,30 +12,24 @@ class HtUserHtRole implements Serializable {
 	private static final long serialVersionUID = 1
 
 	public static initDefaultUsers(GrailsApplication grailsApplication) {
-		def patientRole = new HtRole("ROLE_PATIENT").save();
-		def adminRole = new HtRole("ROLE_ADMIN").save()
-		def doctorRole = new HtRole("ROLE_DOCTOR").save()
-		def nurseRole = new HtRole("ROLE_NURSE").save()
-		def serverRole = new HtRole("ROLE_SERVER").save()
+		def patientRole = new HtRole(authority: "ROLE_PATIENT").save(failOnError: true);
+		def adminRole = new HtRole(authority: "ROLE_ADMIN").save()
+		def doctorRole = new HtRole(authority: "ROLE_DOCTOR").save()
+		def nurseRole = new HtRole(authority: "ROLE_NURSE").save()
+		def serverRole = new HtRole(authority: "ROLE_SERVER").save()
 		
-		def user1 = new HtUser("admin", "password").save()
+		def user1 = new HtUser(username: "admin", password: "password").save()
 		HtUserHtRole.create user1, adminRole, true
 		
-		def user2 = new HtUser("doctor", "password").save()
+		def user2 = new HtUser(username: "doctor", password: "password").save()
 		HtUserHtRole.create user2, doctorRole, true
 		
-		def user3 = new HtUser("nurse", "password").save()
+		def user3 = new HtUser(username: "nurse", password: "password").save(failOnError: true, flush: true)
 		HtUserHtRole.create user3, nurseRole, true
 	}
 	
 	HtUser htUser
 	HtRole htRole
-
-	HtUserHtRole(HtUser u, HtRole r) {
-		this()
-		htUser = u
-		htRole = r
-	}
 
 	@Override
 	boolean equals(other) {
