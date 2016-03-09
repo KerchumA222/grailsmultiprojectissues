@@ -1,0 +1,28 @@
+So here right now I've done this:
+
+grails create-app htWp
+grails create-plugin htCommons
+created the settings.gradle
+added the compile project dependency to htWp
+
+in htCommons:
+	added the spring dependency
+	grails compile to load them. At this location I got this issue https://github.com/grails/grails-core/issues/9759 so my grails CLI was broken. To fix I switched to grails 3.1.x here. So the projects are created with grails 3.1.3, but from here I have to use the branch 3.1.x build myself.
+
+
+copied over the spring config from the plugin to the app
+
+created the ApiController in htWp with a simple test function
+
+when I now start grails via run-app and navigate to the index of the ApiController I get this error:
+
+URI
+    /api/index
+Class
+    groovy.lang.MissingMethodException
+Message
+    null
+Caused by
+    No signature of method: htwp.ApiController.getAuthenticatedUser() is applicable for argument types: () values: [] Possible solutions: getAuthenticatedUser()
+
+It seems using the GORM classes works now. This "getAuthenticatedUser() isn't available in the controller" is one of maybe 5 errors that have been playing hide and seek with me all day. I dunno what is going on.

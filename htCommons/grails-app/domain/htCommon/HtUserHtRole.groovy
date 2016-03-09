@@ -1,5 +1,6 @@
 package htCommon
 
+import grails.core.GrailsApplication;
 import grails.gorm.DetachedCriteria
 import groovy.transform.ToString
 
@@ -10,6 +11,23 @@ class HtUserHtRole implements Serializable {
 
 	private static final long serialVersionUID = 1
 
+	public static initDefaultUsers(GrailsApplication grailsApplication) {
+		def patientRole = new HtRole("ROLE_PATIENT").save();
+		def adminRole = new HtRole("ROLE_ADMIN").save()
+		def doctorRole = new HtRole("ROLE_DOCTOR").save()
+		def nurseRole = new HtRole("ROLE_NURSE").save()
+		def serverRole = new HtRole("ROLE_SERVER").save()
+		
+		def user1 = new HtUser("admin", "password").save()
+		HtUserHtRole.create user1, adminRole, true
+		
+		def user2 = new HtUser("doctor", "password").save()
+		HtUserHtRole.create user2, doctorRole, true
+		
+		def user3 = new HtUser("nurse", "password").save()
+		HtUserHtRole.create user3, nurseRole, true
+	}
+	
 	HtUser htUser
 	HtRole htRole
 
