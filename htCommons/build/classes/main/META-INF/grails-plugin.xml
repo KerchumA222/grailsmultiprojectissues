@@ -1,0 +1,21 @@
+<plugin name='htCommons' version='0.1' grailsVersion='3.1.3 &gt; *'>
+  <type>htcommons.HtCommonsGrailsPlugin</type>
+  <author>Your name</author>
+  <title>Ht Commons</title>
+  <grailsVersion>3.1.3 &gt; *</grailsVersion>
+  <pluginExcludes>[grails-app/views/error.gsp]</pluginExcludes>
+  <authorEmail></authorEmail>
+  <description>Brief summary/description of the plugin.
+</description>
+  <name>ht-commons</name>
+  <documentation>http://grails.org/plugin/ht-commons</documentation>
+  <profiles>[web]</profiles>
+  <version />
+  <resources>
+    <resource>htCommon.HtRole</resource>
+    <resource>htCommon.HtUser</resource>
+    <resource>htCommon.HtUserHtRole</resource>
+    <resource>htcommons.Application</resource>
+    <resource>htcommons.UrlMappings</resource>
+  </resources>
+</plugin>
